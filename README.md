@@ -6,7 +6,8 @@ You can download the dataset at this URL：[Download](https://www.kaggle.com/dat
 # Description:
 AstroSpectra-MNIST is a novel dataset designed to benchmark machine learning models on astronomical spectral classification tasks. We provide a lightweight, easily storable, and processable dataset.Through a series of processes including data preprocessing and normalization, the astronomical spectral data from LAMOST are converted into lightweight grayscale images in the format of 28*28 pixels. AstroSpectra-MNIST maintains the same image structure as MNIST but differs in storage format. It is characterized by its small size, ease of storage and accessibility. It includes two versions: AstroSpectra-MNIST-v1 and AstroSpectra-MNIST-v2. v1 includes three categories: Star, Galaxy, and QSO, which are labeled with the numbers 1, 2, and 3, respectively. v2 covers three subcategories of stars, namely F-type, G-type, and K-type, which are also labeled with the numbers 1, 2, and 3.
 
-Dataset Structure:
+**Dataset Structure** :
+<pre>
 AstroSpectra-MNIST/
 ├── AstroSpectra-MNIST-v1/
 │   ├── train_imagesv1/
@@ -19,10 +20,12 @@ AstroSpectra-MNIST/
 │   ├── train_labelsv2.csv
 │   └── test_labelsv2.csv
 └── README.md
+</pre>
 
 - **AstroSpectra-MNIST-v1**(stars, galaxies, quasars)
 
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F27013442%2Faf12f069bd2fa5a08bd448352343d0b5%2FIMG_202508013580_568x169.png?generation=1754018243177992&alt=media)
+
 
 | File Name            | Description                   | Format | Size    |
 | -------------------- | ----------------------------- | ------ | ------- |
@@ -32,7 +35,9 @@ AstroSpectra-MNIST/
 | `test_labelsv1.csv`  | Labels for v1 test set           | CSV    | 16.5 KB |
 
 - **AstroSpectra-MNIST-v2**(F-type, G-type, K-type stars)
+
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F27013442%2F2ba92853b609ea4297ccd71968918c38%2FIMG2_202508019717_568x169.jpg?generation=1754018331698593&alt=media)
+
 
 | File Name            | Description                   | Format | Size    |
 | -------------------- | ----------------------------- | ------ | ------- |
@@ -56,27 +61,106 @@ Classical models (e.g., AlexNet) are adapted by converting input channels to gra
 
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F27013442%2Feda312eb5756e823880b0d5000b3240c%2FIMG_202508016628_576x301.png?generation=1754035851976237&alt=media)
 
-We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress them into 721-dimensional feature vectors using a mean filter. This new dataset is named LineAstroSpectra and includes two versions: LineAstroSpectra-v1 and LineAstroSpectra-v2. Models and hyperparameters identical to the AstroSpectra-MNIST benchmark were applied to LineAstroSpectra. The results provide a direct comparison between the raw spectral and the corresponding AstroSpectra-MNIST version. For machine learning methods, only the best-performing results are presented in the main text(full experimental details and model parameters are available at [https://github.com/zzuwqk/AstroSpectra-MNIST_benchmark](https://github.com/zzuwqk/AstroSpectra-MNIST_benchmark)
+We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress them into 721-dimensional feature vectors using a mean filter. This new dataset is named LineAstroSpectra and includes two versions: LineAstroSpectra-v1 and LineAstroSpectra-v2. Models and hyperparameters identical to the AstroSpectra-MNIST benchmark were applied to LineAstroSpectra. The results provide a direct comparison between the raw spectral and the corresponding AstroSpectra-MNIST version.
 
 -**Machine Learning**
-**Table 1 ：Comparative analysis of classification performance of different models on AstroSpectra-MNIST**(Partial display, average accuracy and variance derived from all results)
+**Table 1 -1：Test Accuracy of Machine Learning Classifiers**
 
-| **Classifier** | **Line-Astrov1** | **Line-Astrov2** | **Astro-MNISTv1** | **Astro-MNISTv2** | **Fashion-MNIST** |
-|----------------|------------------|------------------|-------------------|-------------------|-------------------|
-| DecisionTreeClassifier | 0.795 | 0.657 | 0.795 | 0.742 | 0.799 |
-| ExtraTreeClassifier | 0.661 | 0.507 | 0.787 | 0.680 | 0.729 |
-| GaussianNB | 0.359 | 0.303 | 0.642 | 0.597 | 0.564 |
-| GradientBoostingClassifier | 0.899 | 0.735 | 0.877 | 0.806 | 0.888 |
-| KNeighborsClassifier | 0.760 | 0.599 | 0.812 | 0.674 | 0.847 |
-| LinearSVC | 0.457 | 0.640 | 0.806 | 0.733 | 0.827 |
-| LogisticRegression | 0.524 | 0.657 | 0.808 | 0.741 | 0.838 |
-| MLPClassifier | 0.590 | 0.777 | 0.874 | 0.791 | 0.874 |
-| PassiveAggressiveClassifier | 0.431 | 0.646 | 0.794 | 0.708 | 0.782 |
-| Perceptron | 0.506 | 0.579 | 0.792 | 0.720 | 0.771 |
-| RandomForestClassifier | 0.877 | 0.712 | 0.878 | 0.785 | 0.877 |
-| SGDClassifier | 0.499 | 0.534 | 0.802 | 0.719 | 0.827 |
-| **Average Accuracy** | **0.680** | **0.640** | **0.798** | **0.732** | **0.800** |
-| **Overall Variance** | **0.02650** | **0.00505** | **0.00225** | **0.00112** | **0.00768** |
+
+| **Classifier** | **Parameters** | **AstroSpectra-MNIST-v1** | **AstroSpectra-MNIST-v2** | **Fashion-MNIST** |
+|---|---|---|---|---|
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"random"` | 0.778 | 0.724 | 0.794 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"random"` | 0.774 | 0.745 | 0.795 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"random"` | 0.784 | 0.734 | 0.792 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"random"` | 0.780 | 0.728 | 0.794 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"random"` | 0.768 | 0.711 | 0.784 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"random"` | 0.764 | 0.713 | 0.784 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"best"` | 0.782 | 0.742 | 0.801 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"best"` | 0.795 | 0.742 | 0.799 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"best"` | 0.771 | 0.715 | 0.789 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"best"` | 0.768 | 0.717 | 0.789 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"best"` | 0.758 | 0.727 | 0.797 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"best"` | 0.750 | 0.729 | 0.797 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"random"` | 0.755 | 0.699 | 0.734 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"random"` | 0.787 | 0.680 | 0.729 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"best"` | 0.763 | 0.715 | 0.776 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"random"` | 0.755 | 0.693 | 0.752 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"random"` | 0.754 | 0.694 | 0.751 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"random"` | 0.756 | 0.687 | 0.753 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"random"` | 0.772 | 0.697 | 0.756 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"best"` | 0.750 | 0.695 | 0.771 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"best"` | 0.782 | 0.704 | 0.780 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"best"` | 0.753 | 0.694 | 0.771 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"best"` | 0.776 | 0.695 | 0.778 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"best"` | 0.731 | 0.701 | 0.779 |
+| **GaussianNB** | `"priors":[1/classnum,1/classnum,1/classnum]` | 0.642 | 0.597 | 0.564 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":10,"n_estimators":100` | 0.877 | 0.806 | 0.888 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":50,"n_estimators":10` | 0.780 | 0.742 | 0.804 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":50,"n_estimators":50` | 0.786 | 0.740 | 0.836 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":50,"n_estimators":100` | 0.779 | 0.740 | 0.838 |
+| **KNeighborsClassifier** | `"n_neighbors":1,"p":2,"weights":"uniform"` | 0.812 | 0.674 | 0.847 |
+| **KNeighborsClassifier** | `"n_neighbors":9,"p":1,"weights":"uniform"` | 0.853 | 0.730 | 0.856 |
+| **KNeighborsClassifier** | `"n_neighbors":5,"p":1,"weights":"distance"` | 0.852 | 0.723 | 0.860 |
+| **LinearSVC** | `"C":1,"loss":"squared_hinge","multi_class":"ovr","penalty":"l2"` | 0.806 | 0.733 | 0.827 |
+| **LinearSVC** | `"C":1,"loss":"hinge","multi_class":"ovr","penalty":"l2"` | 0.802 | 0.739 | 0.837 |
+| **LinearSVC** | `"C":10,"loss":"hinge","multi_class":"ovr","penalty":"l2"` | 0.772 | 0.696 | 0.783 |
+| **LinearSVC** | `"C":100,"loss":"squared_hinge","multi_class":"ovr","penalty":"l2"` | 0.805 | 0.709 | 0.788 |
+| **LinearSVC** | `"C":10,"loss":"squared_hinge","multi_class":"ovr","penalty":"l2"` | 0.806 | 0.689 | 0.793 |
+| **LinearSVC** | `"C":100,"loss":"hinge","multi_class":"crammer_singer","penalty":"l2"` | 0.712 | 0.718 | 0.466 |
+| **LinearSVC** | `"C":100,"loss":"squared_hinge","multi_class":"crammer_singer","penalty":"l2"` | 0.713 | 0.718 | 0.458 |
+| **LinearSVC** | `"C":100,"loss":"hinge","multi_class":"crammer_singer","penalty":"l1"` | 0.695 | 0.703 | 0.460 |
+| **LinearSVC** | `"C":100,"loss":"squared_hinge","multi_class":"crammer_singer","penalty":"l1"` | 0.704 | 0.708 | 0.444 |
+| **LogisticRegression** | `"C":100,"multi_class":"ovr","penalty":"l2"` | 0.808 | 0.741 | 0.838 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[10]` | 0.840 | 0.765 | 0.850 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[10,10]` | 0.829 | 0.773 | 0.851 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[10]` | 0.826 | 0.756 | 0.841 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[10,10]` | 0.825 | 0.768 | 0.840 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[100,10]` | 0.874 | 0.791 | 0.874 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[100]` | 0.872 | 0.782 | 0.877 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[100,10]` | 0.864 | 0.775 | 0.865 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[100]` | 0.867 | 0.785 | 0.870 |
+| **PassiveAggressiveClassifier** | `"C":1` | 0.776 | 0.713 | 0.791 |
+| **PassiveAggressiveClassifier** | `"C":10` | 0.767 | 0.712 | 0.794 |
+| **PassiveAggressiveClassifier** | `"C":100` | 0.794 | 0.708 | 0.782 |
+| **Perceptron** | `"penalty":"l2"` | 0.762 | 0.706 | 0.753 |
+| **Perceptron** | `"penalty":"l1"` | 0.792 | 0.720 | 0.771 |
+| **Perceptron** | `"penalty":"elasticnet"` | 0.751 | 0.692 | 0.759 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":10,"n_estimators":10` | 0.836 | 0.751 | 0.834 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":100,"n_estimators":10` | 0.847 | 0.752 | 0.851 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":10,"n_estimators":10` | 0.836 | 0.748 | 0.837 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":50,"n_estimators":10` | 0.843 | 0.757 | 0.850 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":50,"n_estimators":10` | 0.834 | 0.755 | 0.853 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":100,"n_estimators":10` | 0.862 | 0.763 | 0.856 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":10,"n_estimators":50` | 0.835 | 0.760 | 0.843 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":10,"n_estimators":50` | 0.836 | 0.757 | 0.845 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":100,"n_estimators":50` | 0.872 | 0.780 | 0.873 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":50,"n_estimators":50` | 0.871 | 0.781 | 0.873 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":10,"n_estimators":100` | 0.854 | 0.758 | 0.844 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":100,"n_estimators":100` | 0.870 | 0.784 | 0.876 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":100,"n_estimators":50` | 0.873 | 0.780 | 0.875 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":50,"n_estimators":50` | 0.867 | 0.785 | 0.874 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":10,"n_estimators":100` | 0.846 | 0.759 | 0.846 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":100,"n_estimators":100` | 0.878 | 0.785 | 0.877 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":50,"n_estimators":100` | 0.869 | 0.785 | 0.879 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":50,"n_estimators":100` | 0.873 | 0.782 | 0.876 |
+| **SGDClassifier** | `"loss":"squared_hinge","penalty":"l2"` | 0.793 | 0.720 | 0.826 |
+| **SGDClassifier** | `"loss":"hinge","penalty":"l2"` | 0.800 | 0.728 | 0.826 |
+| **SGDClassifier** | `"loss":"modified_huber","penalty":"l2"` | 0.792 | 0.719 | 0.827 |
+| **SGDClassifier** | `"loss":"perceptron","penalty":"l2"` | 0.780 | 0.711 | 0.826 |
+| **SGDClassifier** | `"loss":"hinge","penalty":"elasticnet"` | 0.791 | 0.727 | 0.829 |
+| **SGDClassifier** | `"loss":"log_loss","penalty":"l2"` | 0.777 | 0.735 | 0.827 |
+| **SGDClassifier** | `"loss":"perceptron","penalty":"l1"` | 0.772 | 0.732 | 0.819 |
+| **SGDClassifier** | `"loss":"squared_hinge","penalty":"l1"` | 0.771 | 0.694 | 0.819 |
+| **SGDClassifier** | `"loss":"modified_huber","penalty":"elasticnet"` | 0.792 | 0.722 | 0.831 |
+| **SGDClassifier** | `"loss":"squared_hinge","penalty":"elasticnet"` | 0.783 | 0.715 | 0.828 |
+| **SGDClassifier** | `"loss":"log_loss","penalty":"l1"` | 0.775 | 0.737 | 0.821 |
+| **SGDClassifier** | `"loss":"hinge","penalty":"l1"` | 0.775 | 0.735 | 0.820 |
+| **SGDClassifier** | `"loss":"modified_huber","penalty":"l1"` | 0.767 | 0.736 | 0.821 |
+| **SGDClassifier** | `"loss":"perceptron","penalty":"elasticnet"` | 0.769 | 0.724 | 0.828 |
+| **SGDClassifier** | `"loss":"log_loss","penalty":"elasticnet"` | 0.782 | 0.741 | 0.826 |
+```
+
+**Table 1 -2：Comparative analysis of classification performance of different models on AstroSpectra-MNIST**
 
 
 
