@@ -274,6 +274,12 @@ We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress the
 | **Average Accuracy** | **0.891** | **0.823** | **0.928** |
 | **Overall Variance** | **0.000346** | **0.000200** | **0.000367** |
 
+&#8203;
+![Confusion matrix](./Confusion matrix/图片20.1.png)
+![Confusion matrix](./Confusion_matrix/图片20_1.png)
+**Deep Learning**
+
+
 # Citation：
 
 If you use this dataset, please cite:
