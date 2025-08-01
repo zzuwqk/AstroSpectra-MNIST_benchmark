@@ -64,7 +64,7 @@ Classical models (e.g., AlexNet) are adapted by converting input channels to gra
 We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress them into 721-dimensional feature vectors using a mean filter. This new dataset is named LineAstroSpectra and includes two versions: LineAstroSpectra-v1 and LineAstroSpectra-v2. Models and hyperparameters identical to the AstroSpectra-MNIST benchmark were applied to LineAstroSpectra. The results provide a direct comparison between the raw spectral and the corresponding AstroSpectra-MNIST version.
 
 -**Machine Learning**
-**Table 1 -1：Test Accuracy of Machine Learning Classifiers**
+**Table 1-1：Test Accuracy of Machine Learning Classifiers**
 
 
 | **Classifier** | **Parameters** | **AstroSpectra-MNIST-v1** | **AstroSpectra-MNIST-v2** | **Fashion-MNIST** |
@@ -158,13 +158,107 @@ We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress the
 | **SGDClassifier** | `"loss":"modified_huber","penalty":"l1"` | 0.767 | 0.736 | 0.821 |
 | **SGDClassifier** | `"loss":"perceptron","penalty":"elasticnet"` | 0.769 | 0.724 | 0.828 |
 | **SGDClassifier** | `"loss":"log_loss","penalty":"elasticnet"` | 0.782 | 0.741 | 0.826 |
-```
 
-**Table 1 -2：Comparative analysis of classification performance of different models on AstroSpectra-MNIST**
-
+&#8203;
 
 
--**Deep Learning**
+**Table 1-2：Machine learning test results and comparison for LineAstroSpectra**
+
+| **Classifier** | **Parameters** | **LineAstroSpectra-v1** | **AstroSpectra-MNIST-v1** | **LineAstroSpectra-v2** | **AstroSpectra-MNIST-v2** |
+|---|---|---|---|---|---|
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"random"` | 0.795 | 0.778 | 0.649 | 0.724 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"random"` | 0.779 | 0.774 | 0.557 | 0.745 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"random"` | 0.793 | 0.784 | 0.591 | 0.734 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"random"` | 0.803 | 0.780 | 0.646 | 0.728 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"random"` | 0.807 | 0.768 | 0.630 | 0.711 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"random"` | 0.814 | 0.764 | 0.658 | 0.713 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"best"` | 0.807 | 0.782 | 0.643 | 0.742 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"best"` | 0.795 | 0.795 | 0.657 | 0.742 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"best"` | 0.789 | 0.771 | 0.656 | 0.715 |
+| **DecisionTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"best"` | 0.803 | 0.768 | 0.651 | 0.717 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"best"` | 0.810 | 0.758 | 0.671 | 0.727 |
+| **DecisionTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"best"` | 0.809 | 0.750 | 0.666 | 0.729 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"random"` | 0.664 | 0.755 | 0.512 | 0.699 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"random"` | 0.661 | 0.787 | 0.507 | 0.680 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":10,"splitter":"best"` | 0.769 | 0.763 | 0.603 | 0.715 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"random"` | 0.762 | 0.755 | 0.606 | 0.693 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"random"` | 0.789 | 0.754 | 0.616 | 0.694 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"random"` | 0.778 | 0.756 | 0.604 | 0.687 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"random"` | 0.769 | 0.772 | 0.595 | 0.697 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":100,"splitter":"best"` | 0.795 | 0.750 | 0.619 | 0.695 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":10,"splitter":"best"` | 0.783 | 0.782 | 0.626 | 0.704 |
+| **ExtraTreeClassifier** | `"criterion":"gini","max_depth":50,"splitter":"best"` | 0.794 | 0.753 | 0.628 | 0.694 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":50,"splitter":"best"` | 0.786 | 0.776 | 0.640 | 0.695 |
+| **ExtraTreeClassifier** | `"criterion":"entropy","max_depth":100,"splitter":"best"` | 0.792 | 0.731 | 0.626 | 0.701 |
+| **GaussianNB** | `"priors":[1/classnum,1/classnum,1/classnum]` | 0.359 | 0.642 | 0.303 | 0.597 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":10,"n_estimators":100` | 0.899 | 0.877 | 0.735 | 0.806 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":50,"n_estimators":10` | 0.829 | 0.780 | 0.678 | 0.742 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":50,"n_estimators":50` | 0.826 | 0.786 | 0.674 | 0.740 |
+| **GradientBoostingClassifier** | `loss="log_loss","max_depth":50,"n_estimators":100` | 0.828 | 0.779 | 0.674 | 0.740 |
+| **KNeighborsClassifier** | `"n_neighbors":1,"p":2,"weights":"uniform"` | 0.760 | 0.812 | 0.599 | 0.674 |
+| **KNeighborsClassifier** | `"n_neighbors":9,"p":1,"weights":"uniform"` | 0.737 | 0.853 | 0.608 | 0.730 |
+| **KNeighborsClassifier** | `"n_neighbors":5,"p":1,"weights":"distance"` | 0.741 | 0.852 | 0.613 | 0.723 |
+| **LinearSVC** | `"C":1,"loss":"squared_hinge","multi_class":"ovr","penalty":"l2"` | 0.457 | 0.806 | 0.640 | 0.733 |
+| **LinearSVC** | `"C":1,"loss":"hinge","multi_class":"ovr","penalty":"l2"` | 0.535 | 0.802 | 0.638 | 0.739 |
+| **LinearSVC** | `"C":10,"loss":"hinge","multi_class":"ovr","penalty":"l2"` | 0.522 | 0.772 | 0.694 | 0.696 |
+| **LinearSVC** | `"C":100,"loss":"squared_hinge","multi_class":"ovr","penalty":"l2"` | 0.511 | 0.805 | 0.728 | 0.709 |
+| **LinearSVC** | `"C":10,"loss":"squared_hinge","multi_class":"ovr","penalty":"l2"` | 0.525 | 0.806 | 0.698 | 0.689 |
+| **LinearSVC** | `"C":100,"loss":"hinge","multi_class":"crammer_singer","penalty":"l2"` | 0.664 | 0.712 | 0.713 | 0.718 |
+| **LinearSVC** | `"C":100,"loss":"squared_hinge","multi_class":"crammer_singer","penalty":"l2"` | 0.665 | 0.713 | 0.668 | 0.718 |
+| **LinearSVC** | `"C":100,"loss":"hinge","multi_class":"crammer_singer","penalty":"l1"` | 0.665 | 0.695 | 0.666 | 0.703 |
+| **LinearSVC** | `"C":100,"loss":"squared_hinge","multi_class":"crammer_singer","penalty":"l1"` | 0.665 | 0.704 | 0.732 | 0.708 |
+| **LogisticRegression** | `"C":100,"multi_class":"ovr","penalty":"l2"` | 0.524 | 0.808 | 0.657 | 0.741 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[10]` | 0.572 | 0.840 | 0.721 | 0.765 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[10,10]` | 0.618 | 0.829 | 0.720 | 0.773 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[10]` | 0.554 | 0.826 | 0.698 | 0.756 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[10,10]` | 0.554 | 0.825 | 0.718 | 0.768 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[100,10]` | 0.590 | 0.874 | 0.777 | 0.791 |
+| **MLPClassifier** | `"activation":"relu","hidden_layer_sizes":[100]` | 0.553 | 0.872 | 0.698 | 0.782 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[100,10]` | 0.560 | 0.864 | 0.787 | 0.775 |
+| **MLPClassifier** | `"activation":"tanh","hidden_layer_sizes":[100]` | 0.530 | 0.867 | 0.732 | 0.785 |
+| **PassiveAggressiveClassifier** | `"C":1` | 0.515 | 0.776 | 0.692 | 0.713 |
+| **PassiveAggressiveClassifier** | `"C":10` | 0.343 | 0.767 | 0.627 | 0.712 |
+| **PassiveAggressiveClassifier** | `"C":100` | 0.431 | 0.794 | 0.646 | 0.708 |
+| **Perceptron** | `"penalty":"l2"` | 0.512 | 0.762 | 0.575 | 0.706 |
+| **Perceptron** | `"penalty":"l1"` | 0.506 | 0.792 | 0.579 | 0.720 |
+| **Perceptron** | `"penalty":"elasticnet"` | 0.437 | 0.751 | 0.499 | 0.692 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":10,"n_estimators":10` | 0.834 | 0.836 | 0.629 | 0.751 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":100,"n_estimators":10` | 0.862 | 0.847 | 0.676 | 0.752 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":10,"n_estimators":10` | 0.845 | 0.836 | 0.642 | 0.748 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":50,"n_estimators":10` | 0.862 | 0.843 | 0.674 | 0.757 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":50,"n_estimators":10` | 0.864 | 0.834 | 0.681 | 0.755 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":100,"n_estimators":10` | 0.833 | 0.862 | 0.684 | 0.763 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":10,"n_estimators":50` | 0.847 | 0.835 | 0.639 | 0.760 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":10,"n_estimators":50` | 0.848 | 0.836 | 0.648 | 0.757 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":100,"n_estimators":50` | 0.875 | 0.872 | 0.711 | 0.780 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":50,"n_estimators":50` | 0.877 | 0.871 | 0.708 | 0.781 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":10,"n_estimators":100` | 0.846 | 0.854 | 0.641 | 0.758 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":100,"n_estimators":100` | 0.882 | 0.870 | 0.715 | 0.784 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":100,"n_estimators":50` | 0.881 | 0.873 | 0.704 | 0.780 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":50,"n_estimators":50` | 0.878 | 0.867 | 0.706 | 0.785 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":10,"n_estimators":100` | 0.861 | 0.846 | 0.646 | 0.759 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":100,"n_estimators":100` | 0.877 | 0.878 | 0.712 | 0.785 |
+| **RandomForestClassifier** | `"criterion":"entropy","max_depth":50,"n_estimators":100` | 0.883 | 0.869 | 0.715 | 0.785 |
+| **RandomForestClassifier** | `"criterion":"gini","max_depth":50,"n_estimators":100` | 0.881 | 0.873 | 0.719 | 0.782 |
+| **SGDClassifier** | `"loss":"squared_hinge","penalty":"l2"` | 0.522 | 0.793 | 0.679 | 0.720 |
+| **SGDClassifier** | `"loss":"hinge","penalty":"l2"` | 0.523 | 0.800 | 0.587 | 0.728 |
+| **SGDClassifier** | `"loss":"modified_huber","penalty":"l2"` | 0.499 | 0.802 | 0.534 | 0.719 |
+| **SGDClassifier** | `"loss":"perceptron","penalty":"l2"` | 0.540 | 0.780 | 0.552 | 0.711 |
+| **SGDClassifier** | `"loss":"hinge","penalty":"elasticnet"` | 0.480 | 0.791 | 0.575 | 0.727 |
+| **SGDClassifier** | `"loss":"log_loss","penalty":"l2"` | 0.436 | 0.777 | 0.509 | 0.735 |
+| **SGDClassifier** | `"loss":"perceptron","penalty":"l1"` | 0.450 | 0.772 | 0.577 | 0.732 |
+| **SGDClassifier** | `"loss":"squared_hinge","penalty":"l1"` | 0.409 | 0.771 | 0.568 | 0.694 |
+| **SGDClassifier** | `"loss":"modified_huber","penalty":"elasticnet"` | 0.554 | 0.792 | 0.587 | 0.722 |
+| **SGDClassifier** | `"loss":"squared_hinge","penalty":"elasticnet"` | 0.554 | 0.783 | 0.617 | 0.715 |
+| **SGDClassifier** | `"loss":"log_loss","penalty":"l1"` | 0.479 | 0.775 | 0.542 | 0.737 |
+| **SGDClassifier** | `"loss":"hinge","penalty":"l1"` | 0.485 | 0.775 | 0.598 | 0.735 |
+| **SGDClassifier** | `"loss":"modified_huber","penalty":"l1"` | 0.363 | 0.767 | 0.645 | 0.736 |
+| **SGDClassifier** | `"loss":"perceptron","penalty":"elasticnet"` | 0.450 | 0.769 | 0.612 | 0.724 |
+| **SGDClassifier** | `"loss":"log_loss","penalty":"elasticnet"` | 0.464 | 0.782 | 0.519 | 0.741 |
+
+&#8203;
+
+**Deep Learning**
  **Table 2：Comparison of classification performance of deep learning models on AstroSpectra-MNIST**
 
 | **Model** | **AstroSpectra-MNIST-v1** | **AstroSpectra-MNIST-v2** | **Fashion-MNIST** |
@@ -179,7 +273,8 @@ We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress the
 | MobileNetv2 | 0.852 | 0.802 | 0.950 |
 | **Average Accuracy** | **0.891** | **0.823** | **0.928** |
 | **Overall Variance** | **0.000346** | **0.000200** | **0.000367** |
-# 📌 Citation：
+
+# Citation：
 
 If you use this dataset, please cite:
 
