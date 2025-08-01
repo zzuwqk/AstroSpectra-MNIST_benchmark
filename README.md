@@ -275,8 +275,68 @@ We obtain 3601-dimensional raw spectrum vectors from LAMOST DR1 and compress the
 | **Overall Variance** | **0.000346** | **0.000200** | **0.000367** |
 
 &#8203;
-![Confusion matrix](./Confusion matrix/图片20.1.png)
-![Confusion matrix](./Confusion_matrix/图片20_1.png)
+
+# Confusion matrix：
+
+
+<!-- SimpleCNN1 -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img20.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img20.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of SimpleCNN1</strong></p>
+
+<!-- SimpleCNN2 -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img21.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img21.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of SimpleCNN2</strong></p>
+
+<!-- AlexNet -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img22.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img22.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of AlexNet</strong></p>
+
+<!-- VGG16 -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img23.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img23.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of VGG16</strong></p>
+
+<!-- LeNet -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img24.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img24.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of LeNet</strong></p>
+
+<!-- GoogLeNet -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img25.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img25.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of GoogLeNet</strong></p>
+
+<!-- ResNet18 -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img26.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img26.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of ResNet18</strong></p>
+
+<!-- MobileNetV2 -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img27.1.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/Confusion%20matrix/img27.2.png" width="45%" />
+</p>
+<p align="center"><strong>Confusion matrix of MobileNetV2</strong></p>
+
+
+
 **Deep Learning**
 
 
