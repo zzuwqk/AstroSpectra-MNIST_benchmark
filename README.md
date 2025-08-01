@@ -1,9 +1,12 @@
-# AstroSpectra-MNIST_benchmark
+# AstroSpectra-MNIST_benchmark：
 [点击查看 PDF 文件](https://raw.githubusercontent.com/zzuwqk/AstroSpectra-MNIST_benchmark/main/AstroSpectra-MNIST_benchmark.pdf)
+
+# Download：
+You can download the dataset at this URL：[Download](https://www.kaggle.com/datasets/zzuygs/astrospectra-mnist-dataset/data).
 # Description:
 AstroSpectra-MNIST is a novel dataset designed to benchmark machine learning models on astronomical spectral classification tasks. We provide a lightweight, easily storable, and processable dataset.Through a series of processes including data preprocessing and normalization, the astronomical spectral data from LAMOST are converted into lightweight grayscale images in the format of 28*28 pixels. AstroSpectra-MNIST maintains the same image structure as MNIST but differs in storage format. It is characterized by its small size, ease of storage and accessibility. It includes two versions: AstroSpectra-MNIST-v1 and AstroSpectra-MNIST-v2. v1 includes three categories: Star, Galaxy, and QSO, which are labeled with the numbers 1, 2, and 3, respectively. v2 covers three subcategories of stars, namely F-type, G-type, and K-type, which are also labeled with the numbers 1, 2, and 3.
 
-#Dataset Structure:
+Dataset Structure:
 AstroSpectra-MNIST/
 ├── AstroSpectra-MNIST-v1/
 │   ├── train_imagesv1/
